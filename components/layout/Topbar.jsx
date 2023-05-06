@@ -49,17 +49,17 @@ function Topbar(props) {
 
       {/* ICONS */}
       <Box display="flex" justifyContent="space-evenly">
-        <IconButton onClick={appTheme.toggleTheme}>
+        <IconButton onClick={appTheme.toggleTheme} sx={{margin:"0px 4px"}}>
           {theme.palette.mode === "dark" ? (
             <LightModeOutlinedIcon color="primary" />
           ) : (
             <DarkModeOutlinedIcon color="primary" />
           )}
         </IconButton>
-        <IconButton>
+        <IconButton sx={{margin:"0px 4px"}}>
           <SettingsApplicationsOutlinedIcon color="primary" />
         </IconButton>
-        <IconButton>
+        <IconButton sx={{margin:"0px 4px"}}>
           <Avatar />
         </IconButton>
       </Box>
