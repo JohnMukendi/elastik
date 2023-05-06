@@ -7,6 +7,7 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import SettingsApplicationsOutlinedIcon from "@mui/icons-material/SettingsApplicationsOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
+import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
 
 function Topbar(props) {
   const theme = useTheme();
@@ -20,6 +21,7 @@ function Topbar(props) {
       p={2}
     >
       <Box display="flex">
+        {/* shows on mobile */}
         <Box sx={{ display: { md: "none" } }}>
           <IconButton
             color="primary"
@@ -31,6 +33,7 @@ function Topbar(props) {
             <MenuIcon />
           </IconButton>
         </Box>
+        
         <Box
           display="flex"
           backgroundColor={theme.palette.background.light}

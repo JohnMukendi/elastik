@@ -8,7 +8,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
@@ -19,7 +18,10 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Topbar from "./Topbar";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -140,18 +142,36 @@ export default function MiniDrawer({ children }) {
           }}
         >
           <Box pt={3} pb={2} display="flex" alignItems="center">
+            <Link href="/">
+              <Box>
+                <IconButton color="primary">
+                  <img
+                    src="favicon.ico"
+                    style={{ width: "40px", height: "40px" }}
+                  />
+                </IconButton>
+              </Box>
+            </Link>
             <Box>
-              <Typography
-                color="primary"
-                sx={{
-                  fontSize: "20px",
-                  letterSpacing: "2px",
-                  textAlign: "center",
+              <Link
+                href="/"
+                style={{
+                  textDecoration: "none",
                 }}
-                mr={3}
               >
-                ADMINS
-              </Typography>
+                <Typography
+                  color="primary"
+                  sx={{
+                    fontSize: "20px",
+                    letterSpacing: "2px",
+                    textAlign: "center",
+                  }}
+                  fontWeight={700}
+                  mr={3}
+                >
+                  LASTIK
+                </Typography>
+              </Link>
             </Box>
 
             <Box sx={{ position: "relative", top: "-2px" }}>
@@ -180,14 +200,17 @@ export default function MiniDrawer({ children }) {
             alignItems: "center",
           }}
         >
-          <Box
-            sx={{
-              height: "120px",
-              width: "120px",
+          <Image
+            height={open ? 120 : 0}
+            width={open ? 120 : 0}
+            src="/profile.jpg"
+            style={{
               borderRadius: "50%",
               background: "blue",
+              transition: "0.6s",
+              // display: open ? "block" : "none",
             }}
-          ></Box>
+          />
           <Typography
             color="primary"
             mt={2}
@@ -202,43 +225,50 @@ export default function MiniDrawer({ children }) {
 
         <Divider sx={{ display: open ? "block" : "none" }} />
         <List>
-          {["Undertakings", "Starred", "Send email", "Drafts"].map(
-            (text, index) => (
-              <Link
-                href={`/${text.toLowerCase().replace(/ /g, "-")}`}
-                style={{
-                  textDecoration: "none",
-                  margin: "0px",
-                  padding: "0px",
-                  color: currentRoute(text) ? theme.palette.primary.main : "#222",
-                }}
-              >
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
+          {[
+            { name: "Dashboard", icon: <DashboardOutlinedIcon /> },
+            { name: "Undertakings", icon: <AssignmentOutlinedIcon /> },
+            { name: "Starred", icon: <></> },
+            { name: "Send email", icon: <></> },
+            { name: "Drafts", icon: <></> },
+          ].map(({ name: text, icon }) => (
+            <Link
+              href={`/${text.toLowerCase().replace(/ /g, "-")}`}
+              style={{
+                textDecoration: "none",
+                margin: "0px",
+                padding: "0px",
+                color: currentRoute(text) ? theme.palette.primary.main : "#222",
+              }}
+            >
+              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
                     sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
                     }}
                   >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </ListItem>
-              </Link>
-            )
-          )}
+                    {React.cloneElement(icon, {
+                      sx: {
+                        color: currentRoute(text)
+                          ? theme.palette.primary.main
+                          : "",
+                      },
+                    })}
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          ))}
         </List>
         <Divider />
         <List>
