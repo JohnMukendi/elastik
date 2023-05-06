@@ -12,13 +12,28 @@ const themeConfig = (mode = "dark") => {
       mode,
       ...(mode === "dark"
         ? {
-            primary: { main: peach[500],dark:"#563" },
-            text: { primary: "#485406" },
-            background: { default: blue[800], light: blue[500],dark:blue[900] },
+            primary: {
+              main: peach[200],
+              dark: "#563999",
+              contrastText: "rgb(200,0,0)",
+            },
+            secondary: { main: peach[600] },
+            text: { primary: peach[200] },
+            background: {
+              default: blue[800],
+              light: blue[500],
+              dark: blue[900],
+            },
           }
         : {
-            primary: { main: blue[700] },
-            background: { default: peach[300], light: peach[200],dark:peach[400] },
+            primary: { main: blue[700], light: blue[500], dark: blue[800] },
+            secondary: { main: blue[400],light:peach[600],dark:peach[700] },
+            text: { primary: blue[700], secondary: blue[600] },
+            background: {
+              default: peach[100],
+              light: peach[200],
+              dark: peach[400],
+            },
           }),
     },
   };

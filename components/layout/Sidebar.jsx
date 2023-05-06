@@ -24,6 +24,7 @@ import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
+import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -94,8 +95,8 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer({ children }) {
   const theme = useTheme();
   const router = useRouter();
-  
-  const [open, setOpen] = React.useState(false);
+
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -105,11 +106,11 @@ export default function MiniDrawer({ children }) {
     setOpen(false);
   };
   const currentRoute = (pageName) => {
-    if (pageName === 'Dashboard' && router.pathname === '/'){
-      return true
+    if (pageName === "Dashboard" && router.pathname === "/") {
+      return true;
     }
     if (
-      router.pathname.includes(`/${pageName.toLowerCase().replace(/ /g, "-")}` )
+      router.pathname.includes(`/${pageName.toLowerCase().replace(/ /g, "-")}`)
     ) {
       return true;
     } else {
@@ -236,7 +237,7 @@ export default function MiniDrawer({ children }) {
             { name: "Undertakings", icon: <AssignmentOutlinedIcon /> },
             { name: "Analytics", icon: <ShowChartOutlinedIcon /> },
             { name: "Calendar", icon: <CalendarMonthOutlinedIcon /> },
-            { name: "Drafts", icon: <></> },
+            { name: "Plans", icon: <EditNoteOutlinedIcon /> },
           ].map(({ name: text, icon }) => (
             <Link
               href={
@@ -274,7 +275,13 @@ export default function MiniDrawer({ children }) {
                       },
                     })}
                   </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText
+                    primary={currentRoute(text) ? <b>{text}</b> : text}
+                    sx={{
+                      opacity: open ? 1 : 0,
+                      fontWeight: currentRoute(text) ? "700" : "700",
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             </Link>
