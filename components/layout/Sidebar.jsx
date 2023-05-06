@@ -22,6 +22,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
+import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -92,6 +94,7 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer({ children }) {
   const theme = useTheme();
   const router = useRouter();
+  
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -102,8 +105,11 @@ export default function MiniDrawer({ children }) {
     setOpen(false);
   };
   const currentRoute = (pageName) => {
+    if (pageName === 'Dashboard' && router.pathname === '/'){
+      return true
+    }
     if (
-      router.pathname.includes(`/${pageName.toLowerCase().replace(/ /g, "-")}`)
+      router.pathname.includes(`/${pageName.toLowerCase().replace(/ /g, "-")}` )
     ) {
       return true;
     } else {
@@ -228,12 +234,16 @@ export default function MiniDrawer({ children }) {
           {[
             { name: "Dashboard", icon: <DashboardOutlinedIcon /> },
             { name: "Undertakings", icon: <AssignmentOutlinedIcon /> },
-            { name: "Starred", icon: <></> },
-            { name: "Send email", icon: <></> },
+            { name: "Analytics", icon: <ShowChartOutlinedIcon /> },
+            { name: "Calendar", icon: <CalendarMonthOutlinedIcon /> },
             { name: "Drafts", icon: <></> },
           ].map(({ name: text, icon }) => (
             <Link
-              href={`/${text.toLowerCase().replace(/ /g, "-")}`}
+              href={
+                text === "Dashboard"
+                  ? "/"
+                  : `/${text.toLowerCase().replace(/ /g, "-")}`
+              }
               style={{
                 textDecoration: "none",
                 margin: "0px",
