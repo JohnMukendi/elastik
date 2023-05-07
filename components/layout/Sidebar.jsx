@@ -25,6 +25,7 @@ import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
+import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -233,14 +234,14 @@ function Sidebar({ children }) {
             marginTop: "-80px",
             marginLeft: "6px",
             position: open ? "absolute" : "relative",
-            
+
             transition: "0.5s",
           }}
         >
           <Link href="/">
-          <IconButton color="primary">
-            <Image src="/favicon.ico" width={40} height={40} alt="logo" />
-          </IconButton>
+            <IconButton color="primary">
+              <Image src="/favicon.ico" width={40} height={40} alt="logo" />
+            </IconButton>
           </Link>
         </Box>
 
@@ -263,7 +264,9 @@ function Sidebar({ children }) {
                 textDecoration: "none",
                 margin: "0px",
                 padding: "0px",
-                color: currentRoute(text) ? theme.palette.primary.main : theme.palette.text.unselected,
+                color: currentRoute(text)
+                  ? theme.palette.primary.main
+                  : theme.palette.text.unselected,
               }}
             >
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
@@ -302,28 +305,58 @@ function Sidebar({ children }) {
           ))}
         </List>
         <Divider />
+        <Typography textAlign="center" mt={1}>Charts</Typography>
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+          {[
+            {
+              name: "Pie Chart",
+              icon: <PieChartOutlineOutlinedIcon />,
+              path: "/pie-chart",
+            },
+          ].map((item, index) => (
+            <Link
+              href={item.path}
+              key={item.path}
+              style={{
+                textDecoration: "none",
+                margin: "0px",
+                padding: "0px",
+                color: currentRoute(item.name)
+                  ? theme.palette.primary.main
+                  : theme.palette.text.unselected,
+              }}
+            >
+              <ListItem disablePadding sx={{ display: "block" }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {React.cloneElement(item.icon, {
+                      sx: {
+                        color: currentRoute(item.name)
+                          ? theme.palette.primary.main
+                          : "",
+                      },
+                    })}
+                  </ListItemIcon>
+
+                  <ListItemText
+                    primary={currentRoute(item.name) ? <b>{item.name}</b> : item.name}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

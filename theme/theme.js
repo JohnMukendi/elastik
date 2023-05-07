@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import colors from "./colors";
 
-const { blue, peach } = colors;
+const { blue, peach, red, orange, yellow, green } = colors;
 
 const ThemeSwitchContext = createContext({ toggleTheme: () => {} });
 const themeConfig = (mode = "dark") => {
@@ -14,33 +14,84 @@ const themeConfig = (mode = "dark") => {
         ? {
             primary: {
               main: peach[200],
-              dark: "#563999",
+              dark: peach[800],
               contrastText: "rgb(200,0,0)",
             },
-            secondary: { main: peach[600] },
-            text: { primary: peach[200],unselected:blue[100] },
+            secondary: { main: orange[300] },
+            text: { primary: peach[200], unselected: blue[100] },
             background: {
               default: blue[800],
               light: blue[500],
               dark: blue[400],
             },
+            custom: {
+              lowLevel: {
+                primary: red[400],
+                light: red[300],
+                xtraLight: red[200],
+                dark: red[700],
+              },
+              mediumLevel: {
+                primary: yellow[600],
+                light: yellow[300],
+                xtraLight: yellow[100],
+                dark: yellow[700],
+              },
+              fullLevel : {
+                primary : green[400],
+                light:green[300],
+                xtraLight : green[100],
+                dark:green[600]
+              },
+            },
+            alternative: {
+              first: orange[300],
+            },
           }
         : {
-            primary: { main: blue[700], light: blue[500], dark: blue[800] },
-            secondary: { main: blue[400],light:peach[600],dark:peach[700] },
-            text: { primary: blue[700], secondary: blue[600],unselected:"#222" },
+            primary: { main: blue[700], light: blue[800], dark: blue[200] },
+            secondary: { main: blue[400], light: peach[600], dark: peach[700] },
+            text: {
+              primary: blue[700],
+              secondary: peach[100],
+              unselected: "#222",
+            },
             background: {
               default: peach[100],
               light: peach[200],
               dark: peach[300],
+              extraLight: peach[100],
+            },
+            custom: {
+              lowLevel: {
+                primary: red[400],
+                light: red[300],
+                xtraLight: red[100],
+                dark: red[600],
+              },
+              mediumLevel: {
+                primary: yellow[600],
+                light: yellow[300],
+                xtraLight: yellow[100],
+                dark: yellow[700],
+              },
+              fullLevel : {
+                primary : green[400],
+                light:green[300],
+                xtraLight : green[100],
+                dark:green[600]
+              }
+            },
+            alternative: {
+              first: blue[500],
+              second: orange[500],
             },
           }),
     },
-    typography:{
-      fontFamily:"Ubuntu",
+    typography: {
+      fontFamily: "Ubuntu",
       // fontFamily:["__myFont_e1a1c0","__myFont_Fallback_e1a1c0"].join(",")
-    }
-    
+    },
   };
 };
 
