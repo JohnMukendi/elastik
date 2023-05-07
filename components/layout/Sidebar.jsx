@@ -92,19 +92,17 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer({ children }) {
+function Sidebar({ children }) {
   const theme = useTheme();
   const router = useRouter();
 
   const [open, setOpen] = React.useState(true);
 
+  const handleDrawerClose = () => setOpen(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
   const currentRoute = (pageName) => {
     if (pageName === "Dashboard" && router.pathname === "/") {
       return true;
@@ -152,12 +150,7 @@ export default function MiniDrawer({ children }) {
             <Link href="/">
               <Box>
                 <IconButton color="primary">
-                  <Image
-                    src="/favicon.ico"
-                    width={40}
-                    height={40}
-                    alt="logo"
-                  />
+                  <Image src="/favicon.ico" width={40} height={40} alt="logo" />
                 </IconButton>
               </Box>
             </Link>
@@ -201,10 +194,10 @@ export default function MiniDrawer({ children }) {
         <Box
           mt={2}
           sx={{
-            height: open ? "220px" : "0px",
+            // height: open ? "220px" : "0px",
             display: "flex",
-            transition: "0.6s",
-
+            transition: "1s",
+            opacity: open ? 1 : 0,
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -217,7 +210,7 @@ export default function MiniDrawer({ children }) {
             style={{
               borderRadius: "50%",
               background: "blue",
-              transition: "0.6s",
+              // transition: "0.6s",
               // display: open ? "block" : "none",
             }}
           />
@@ -227,13 +220,30 @@ export default function MiniDrawer({ children }) {
             fontSize={28}
             fontWeight={700}
             noWrap={true}
-            sx={{ width: "100%", textAlign: "center" }}
+            sx={{ width: "100%", textAlign: "center", opacity: open ? 1 : 0 }}
           >
             John Mukendi
           </Typography>
         </Box>
 
         <Divider sx={{ display: open ? "block" : "none" }} />
+
+        <Box
+          sx={{
+            marginTop: "-80px",
+            marginLeft: "6px",
+            position: open ? "absolute" : "relative",
+            
+            transition: "0.5s",
+          }}
+        >
+          <Link href="/">
+          <IconButton color="primary">
+            <Image src="/favicon.ico" width={40} height={40} alt="logo" />
+          </IconButton>
+          </Link>
+        </Box>
+
         <List>
           {[
             { name: "Dashboard", icon: <DashboardOutlinedIcon /> },
@@ -253,7 +263,7 @@ export default function MiniDrawer({ children }) {
                 textDecoration: "none",
                 margin: "0px",
                 padding: "0px",
-                color: currentRoute(text) ? theme.palette.primary.main : "#222",
+                color: currentRoute(text) ? theme.palette.primary.main : theme.palette.text.unselected,
               }}
             >
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
@@ -324,3 +334,5 @@ export default function MiniDrawer({ children }) {
     </Box>
   );
 }
+
+export default React.memo(Sidebar);

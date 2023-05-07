@@ -18,24 +18,29 @@ const themeConfig = (mode = "dark") => {
               contrastText: "rgb(200,0,0)",
             },
             secondary: { main: peach[600] },
-            text: { primary: peach[200] },
+            text: { primary: peach[200],unselected:blue[100] },
             background: {
               default: blue[800],
               light: blue[500],
-              dark: blue[900],
+              dark: blue[400],
             },
           }
         : {
             primary: { main: blue[700], light: blue[500], dark: blue[800] },
             secondary: { main: blue[400],light:peach[600],dark:peach[700] },
-            text: { primary: blue[700], secondary: blue[600] },
+            text: { primary: blue[700], secondary: blue[600],unselected:"#222" },
             background: {
               default: peach[100],
               light: peach[200],
-              dark: peach[400],
+              dark: peach[300],
             },
           }),
     },
+    typography:{
+      fontFamily:"Ubuntu",
+      // fontFamily:["__myFont_e1a1c0","__myFont_Fallback_e1a1c0"].join(",")
+    }
+    
   };
 };
 

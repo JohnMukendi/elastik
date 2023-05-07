@@ -1,18 +1,55 @@
-*{
-    padding:0px;
-    margin:0px;
-    box-sizing: border-box;
-    transition: background-color 0.5s ease;
-
+@font-face {
+  font-family: "Elatikfont1";
+  src: url("../fonts/static//RobotoMono-Regular.ttf") format("ttf")
+    /* url(/fonts/static/RobotoMono-Regular.ttf); */;
+  font-weight: normal;
+  font-style: normal;
 }
 
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+.fade {
+  transition: opacity 0.5s ease-out;
+}
+.fade.hidden {
+  opacity: 0;
+}
+.e-font {
+  color: red;
+  font-family: "__myFont_e1a1c0", "__myFont_Fallback_e1a1c0";
+}
+.shake {
+  animation: shake ;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
   
-::-webkit-scrollbar{
-    width:10px
+  
 }
-.fade{
-    transition: opacity 0.5s ease-out;
-}
-.fade.hidden{
-    opacity: 0;
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-10px, 0) rotate(-5deg);
+  }
+  30% {
+    transform: translate(10px, 0) rotate(5deg);
+  }
+  50% {
+    transform: translate(-10px, 0) rotate(-5deg);
+  }
+  60% {
+    transform: translate(10px, 0) rotate(5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }

@@ -48,8 +48,8 @@ function Topbar(props) {
       </Box>
 
       {/* ICONS */}
-      <Box display="flex" justifyContent="space-evenly">
-        <IconButton onClick={appTheme.toggleTheme} sx={{margin:"0px 4px"}}>
+      <Box >
+        <IconButton onClick={appTheme.toggleTheme} sx={{margin:"0px 4px",borderRadius:"50%"}}>
           {theme.palette.mode === "dark" ? (
             <LightModeOutlinedIcon color="primary" />
           ) : (

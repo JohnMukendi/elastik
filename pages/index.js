@@ -16,6 +16,7 @@ export default function Home() {
     <Box>
       <Head><title>Elastik | Dashbaord</title></Head>
       {/* header */}
+      
       <Header
         name="dashboard"
         info="Welcome to your dashbaord,this is an overview of all your task"
