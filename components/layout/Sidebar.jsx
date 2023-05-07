@@ -152,9 +152,11 @@ export default function MiniDrawer({ children }) {
             <Link href="/">
               <Box>
                 <IconButton color="primary">
-                  <img
-                    src="favicon.ico"
-                    style={{ width: "40px", height: "40px" }}
+                  <Image
+                    src="/favicon.ico"
+                    width={40}
+                    height={40}
+                    alt="logo"
                   />
                 </IconButton>
               </Box>
@@ -211,6 +213,7 @@ export default function MiniDrawer({ children }) {
             height={open ? 120 : 0}
             width={open ? 120 : 0}
             src="/profile.jpg"
+            alt="profile"
             style={{
               borderRadius: "50%",
               background: "blue",
@@ -240,6 +243,7 @@ export default function MiniDrawer({ children }) {
             { name: "Plans", icon: <EditNoteOutlinedIcon /> },
           ].map(({ name: text, icon }) => (
             <Link
+              key={text}
               href={
                 text === "Dashboard"
                   ? "/"
