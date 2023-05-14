@@ -28,7 +28,7 @@ export default function Home() {
         info="Welcome to your dashbaord,this is an overview of all your task"
       />
       <Grid container spacing={2}>
-        <Grid item md={3}>
+        <Grid item xs={6} md={3}>
           <InfoBox
             palette={theme.palette}
             level="lowLevel"
@@ -38,7 +38,7 @@ export default function Home() {
             size="50px"
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item xs={6}md={3}>
           <InfoBox
             palette={theme.palette}
             level="mediumLevel"
@@ -48,7 +48,7 @@ export default function Home() {
             size="50px"
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item xs={6} md={3}>
           <InfoBox
             palette={theme.palette}
             level="fullLevel"
@@ -58,7 +58,7 @@ export default function Home() {
             size="50px"
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item xs={6} md={3}>
           <Paper
             elevation={5}
             sx={{
@@ -75,7 +75,7 @@ export default function Home() {
           {" "}
           </Paper>
         </Grid>
-        <Grid item md={9}>
+        <Grid item xs={12} md={9}>
           <Paper
             elevation={5}
             sx={{
@@ -92,7 +92,7 @@ export default function Home() {
           {" "}
           </Paper>
         </Grid>
-        <Grid item md={3}>
+        <Grid item xs={6 }md={3}>
           <Paper
             elevation={5}
             sx={{
@@ -110,7 +110,7 @@ export default function Home() {
           {" "}<Box height='400px'/>
           </Paper>
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={6}md={4}>
           <Paper
             elevation={5}
             sx={{
@@ -127,7 +127,7 @@ export default function Home() {
           {" "}
           </Paper>
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={12}md={4}>
           <Paper
             elevation={5}
             sx={{
@@ -144,7 +144,7 @@ export default function Home() {
           {" "}
           </Paper>
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={12}md={4}>
           <Paper
             elevation={5}
             sx={{

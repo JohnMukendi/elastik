@@ -1,15 +1,15 @@
 import { Box, useTheme } from "@mui/material";
 
-const ProgressCircle = ({ info, size }) => {
+const ProgressCircle = ({ info, size,levelColor }) => {
   const theme = useTheme();
 
   const angle = info.percentage * 360;
   return (
     <Box
       sx={{
-        background: `radial-gradient(${theme.palette.background.default} 55%, transparent 56%),
-            conic-gradient(transparent 0deg ${angle}deg, ${theme.palette.primary.dark} ${angle}deg 360deg),
-            ${theme.palette.alternative.first}`,
+        background: `radial-gradient(${levelColor.xtraLight} 55%, transparent 56%),
+            conic-gradient(transparent 0deg ${angle}deg, ${levelColor.light} ${angle}deg 360deg),
+            ${levelColor.primary}`,
         borderRadius: "50%",
         width: `${size}px`,
         height: `${size}px`,

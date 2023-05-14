@@ -26,6 +26,7 @@ import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import { useMediaQuery } from "@mui/material";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -93,10 +94,12 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+//component starts here
 function Sidebar({ children }) {
+
   const theme = useTheme();
   const router = useRouter();
-
+  const isSmallScreen = useMediaQuery('(max-width:600px)')
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerClose = () => setOpen(false);
@@ -123,14 +126,14 @@ function Sidebar({ children }) {
         position="fixed"
         open={open}
         sx={{
-          ...(!open && { width: { sm: "100%", md: "95%" } }),
+          ...(!open && { width: { xs: "100%", md: "95%" } }),
           background: theme.palette.background.default,
           display: "flex",
           alignItems: "center",
         }}
         elevation={0}
       >
-        <Topbar open={open} handleDrawerOpen={handleDrawerOpen} />
+        <Topbar open={open} handleDrawerOpen={handleDrawerOpen} isSmallScreen={isSmallScreen} />
       </AppBar>
       <Drawer
         variant="permanent"

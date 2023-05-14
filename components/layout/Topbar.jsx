@@ -7,10 +7,11 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import SettingsApplicationsOutlinedIcon from "@mui/icons-material/SettingsApplicationsOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';
+import HouseOutlinedIcon from "@mui/icons-material/HouseOutlined";
 
 function Topbar(props) {
   const theme = useTheme();
+  const { isSmallScreen } = props;
   const { appTheme } = useThemeSwitch();
   return (
     <Box
@@ -18,7 +19,9 @@ function Topbar(props) {
       width="100%"
       justifyContent="space-between"
       alignItems="center"
-      p={2}
+      pt={isSmallScreen ? 0 : 2}
+      pb={isSmallScreen ? 0 : 2}
+      pl={5}
     >
       <Box display="flex">
         {/* shows on mobile */}
@@ -33,12 +36,13 @@ function Topbar(props) {
             <MenuIcon />
           </IconButton>
         </Box>
-        
+
         <Box
           display="flex"
           backgroundColor={theme.palette.background.light}
-          borderRadius="3px"
+          borderRadius="50px"
           alignItems="center"
+          width={isSmallScreen &&('210px')}
         >
           <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search..." />
           <IconButton sx={{ p: 1 }}>
@@ -48,18 +52,21 @@ function Topbar(props) {
       </Box>
 
       {/* ICONS */}
-      <Box >
-        <IconButton onClick={appTheme.toggleTheme} sx={{margin:"0px 4px",borderRadius:"50%"}}>
+      <Box>
+        <IconButton
+          onClick={appTheme.toggleTheme}
+          sx={{ margin: { xs: "0px",md: "0px 4px",  }, borderRadius: "50%" }}
+        >
           {theme.palette.mode === "dark" ? (
             <LightModeOutlinedIcon color="primary" />
           ) : (
             <DarkModeOutlinedIcon color="primary" />
           )}
         </IconButton>
-        <IconButton sx={{margin:"0px 4px"}}>
+        <IconButton sx={{ margin: { xs: "0px",md: "0px 4px",  } }}>
           <SettingsApplicationsOutlinedIcon color="primary" />
         </IconButton>
-        <IconButton sx={{margin:"0px 4px"}}>
+        <IconButton sx={{margin: { xs: "0px",md: "0px 4px",  }}}>
           <Avatar />
         </IconButton>
       </Box>

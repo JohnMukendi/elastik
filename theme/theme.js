@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import colors from "./colors";
 
-const { blue, peach, red, orange, yellow, green } = colors;
+const { blue, peach, red, orange, yellow,indigo } = colors;
 
 const ThemeSwitchContext = createContext({ toggleTheme: () => {} });
 const themeConfig = (mode = "dark") => {
@@ -32,16 +32,16 @@ const themeConfig = (mode = "dark") => {
                 dark: red[700],
               },
               mediumLevel: {
-                primary: yellow[600],
-                light: yellow[300],
-                xtraLight: yellow[100],
-                dark: yellow[700],
+                primary: orange[600],
+                light: orange[300],
+                xtraLight: orange[100],
+                dark: orange[700],
               },
               fullLevel : {
-                primary : green[400],
-                light:green[300],
-                xtraLight : green[100],
-                dark:green[600]
+                primary : indigo[400],
+                light:indigo[300],
+                xtraLight : indigo[100],
+                dark:indigo[600]
               },
             },
             alternative: {
@@ -65,21 +65,21 @@ const themeConfig = (mode = "dark") => {
             custom: {
               lowLevel: {
                 primary: red[400],
-                light: red[300],
+                light: red[200],
                 xtraLight: red[100],
                 dark: red[600],
               },
               mediumLevel: {
-                primary: yellow[600],
-                light: yellow[300],
-                xtraLight: yellow[100],
-                dark: yellow[700],
+                primary: orange[600],
+                light: orange[300],
+                xtraLight: orange[100],
+                dark: orange[700],
               },
               fullLevel : {
-                primary : green[400],
-                light:green[300],
-                xtraLight : green[100],
-                dark:green[600]
+                primary : indigo[400],
+                light:indigo[200],
+                xtraLight : indigo[100],
+                dark:indigo[600]
               }
             },
             alternative: {
