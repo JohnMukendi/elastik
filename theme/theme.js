@@ -2,8 +2,8 @@ import React, { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import colors from "./colors";
-
-const { blue, peach, red, orange, yellow,indigo } = colors;
+import { darkPalette } from "./dark-palette";
+const { blue, peach, red, orange, yellow, indigo } = colors;
 
 const ThemeSwitchContext = createContext({ toggleTheme: () => {} });
 const themeConfig = (mode = "dark") => {
@@ -11,43 +11,7 @@ const themeConfig = (mode = "dark") => {
     palette: {
       mode,
       ...(mode === "dark"
-        ? {
-            primary: {
-              main: peach[200],
-              dark: peach[800],
-              contrastText: "rgb(200,0,0)",
-            },
-            secondary: { main: orange[300] },
-            text: { primary: peach[200], unselected: blue[100] },
-            background: {
-              default: blue[800],
-              light: blue[500],
-              dark: blue[400],
-            },
-            custom: {
-              lowLevel: {
-                primary: red[400],
-                light: red[300],
-                xtraLight: red[200],
-                dark: red[700],
-              },
-              mediumLevel: {
-                primary: orange[600],
-                light: orange[300],
-                xtraLight: orange[100],
-                dark: orange[700],
-              },
-              fullLevel : {
-                primary : indigo[400],
-                light:indigo[300],
-                xtraLight : indigo[100],
-                dark:indigo[600]
-              },
-            },
-            alternative: {
-              first: orange[300],
-            },
-          }
+        ? darkPalette
         : {
             primary: { main: blue[700], light: blue[800], dark: blue[200] },
             secondary: { main: blue[400], light: peach[600], dark: peach[700] },
@@ -75,12 +39,12 @@ const themeConfig = (mode = "dark") => {
                 xtraLight: orange[100],
                 dark: orange[700],
               },
-              fullLevel : {
-                primary : indigo[400],
-                light:indigo[200],
-                xtraLight : indigo[100],
-                dark:indigo[600]
-              }
+              fullLevel: {
+                primary: indigo[400],
+                light: indigo[200],
+                xtraLight: indigo[100],
+                dark: indigo[600],
+              },
             },
             alternative: {
               first: blue[500],

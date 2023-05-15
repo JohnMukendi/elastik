@@ -31,7 +31,7 @@ function InfoBox(props) {
             sx: { fontSize: "18px", color: levelColor.primary },
           })}
           <Typography
-            fontSize="18px"
+            sx={{ fontSize: { sm: "14px", md: "18px" } }}
             fontWeight={600}
             color={levelColor.primary}
           >
@@ -52,11 +52,13 @@ function InfoBox(props) {
           <Typography fontSize={28} fontWeight={700}>
             {props.info.tasksCompleted}
           </Typography>
-          <Typography sx={{width:"100%"}} fontSize={14}>{props.title} Tasks completed</Typography>
+          <Typography sx={{ width: "100%", fontSize: { lg:14,md: 12, xs: 14 } }}>
+            {props.title} Tasks completed
+          </Typography>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
           <ProgressCircle info={props.info} size="40" levelColor={levelColor} />
-          <Typography>{Number(props.info.percentage)*100}%</Typography>
+          <Typography>{Number(props.info.percentage) * 100}%</Typography>
         </Box>
       </Container>
     </Paper>

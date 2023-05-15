@@ -25,7 +25,7 @@ function Topbar(props) {
     >
       <Box display="flex">
         {/* shows on mobile */}
-        <Box sx={{ display: { md: "none" } }}>
+        <Box sx={{ display: { lg: "none" } }}>
           <IconButton
             color="primary"
             aria-label="open drawer"
@@ -42,7 +42,7 @@ function Topbar(props) {
           backgroundColor={theme.palette.background.light}
           borderRadius="50px"
           alignItems="center"
-          width={isSmallScreen &&('210px')}
+          width={isSmallScreen ?('180px') : "default"}
         >
           <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search..." />
           <IconButton sx={{ p: 1 }}>
