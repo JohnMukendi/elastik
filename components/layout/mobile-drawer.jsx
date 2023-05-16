@@ -69,7 +69,7 @@ export default function SwipeableTemporaryDrawer({ children }) {
         alignItems="center"
         justifyContent="center"
       >
-        <Box display='flex' justifyContent='center' alignItems='center' ml={6}>
+        <Box display="flex" justifyContent="center" alignItems="center" ml={6}>
           <Link href="/">
             <Box>
               <IconButton color="primary">
@@ -283,14 +283,17 @@ export default function SwipeableTemporaryDrawer({ children }) {
             isSmallScreen
             handleDrawerOpen={() => setState({ left: true })}
           />
-          <Box p={4}>
-          {children}
-          </Box>
+          <Box p={4}>{children}</Box>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
+            sx={{
+              "& .MuiDrawer-paper": {
+                background: theme.palette.background.light,
+              },
+            }}
           >
             {list("left")}
           </SwipeableDrawer>

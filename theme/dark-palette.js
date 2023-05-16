@@ -22,13 +22,13 @@ export const darkPalette = {
         dark: red[700],
       },
       mediumLevel: {
-        primary: orange[600],
+        primary: orange[500],
         light: orange[300],
         xtraLight: orange[100],
         dark: orange[700],
       },
       fullLevel : {
-        primary : green[500],
+        primary : green[600],
         light:green[400],
         xtraLight : green[200],
         dark:green[700]

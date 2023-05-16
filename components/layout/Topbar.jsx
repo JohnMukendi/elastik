@@ -42,7 +42,7 @@ function Topbar(props) {
           backgroundColor={theme.palette.background.light}
           borderRadius="50px"
           alignItems="center"
-          width={isSmallScreen ?('180px') : "default"}
+          sx={{width:{lg:"300px",md:"250px",sm:"300px",xs:"140px"}}}
         >
           <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search..." />
           <IconButton sx={{ p: 1 }}>

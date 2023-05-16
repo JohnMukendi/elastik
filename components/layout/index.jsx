@@ -5,17 +5,17 @@ import SwipeableTemporaryDrawer from "./mobile-drawer";
 function Layout({ children }) {
   const isSmallScreen = useMediaQuery("(max-width:1000px)");
   return (
-    <div style={{ transition: "1" }}>
+    <Box style={{ transition: "1" }}>
       {isSmallScreen ? (
         <SwipeableTemporaryDrawer isSmallScreen={isSmallScreen}>{children}</SwipeableTemporaryDrawer>
       ) : (
         <Sidebar>
-          <Box component="main" pl={5}>
+          <Box component="main" pl={5} width='100%'>
             {children}
           </Box>
         </Sidebar>
       )}
-    </div>
+    </Box>
   );
 }
 
