@@ -52,7 +52,7 @@ function InfoBox(props) {
           <Typography fontSize={28} fontWeight={700}>
             {props.info.tasksCompleted}
           </Typography>
-          <Typography sx={{ width: "100%", fontSize: { lg:14,md: 12, xs: 14 } }}>
+          <Typography sx={{ width: "100%", fontSize: { lg:12,md: 12, xs: 14 } }}>
             {props.title} Tasks completed
           </Typography>
         </Box>

@@ -53,7 +53,7 @@ const themeConfig = (mode = "dark") => {
           }),
     },
     typography: {
-      fontFamily: "Ubuntu",
+      fontFamily: "Verdana",
       // fontFamily:["__myFont_e1a1c0","__myFont_Fallback_e1a1c0"].join(",")
     },
   };
