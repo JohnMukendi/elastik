@@ -4,7 +4,7 @@ import { Inter } from "@next/font/google";
 import React, { useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { useThemeSwitch } from "../theme/theme";
-import { useTheme, Paper } from "@mui/material";
+import { useTheme, } from "@mui/material";
 import Header from "../components/layout/header";
 import InfoBox from "../components/dashboard/info-box";
 import Brightness3OutlinedIcon from "@mui/icons-material/Brightness3Outlined";
@@ -59,12 +59,14 @@ export default function Home() {
           />
         </Grid>
         <Grid item xs={6} md={3}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
               background: "transparent",
               height: "100%",
-              transition: "0.5s",
+
+border:`1px solid ${theme.palette.background.default}`,
+borderRadius:"40px",              transition: "0.5s",
               "&:hover": {
                 scale: "1.1",
                 cursor: "pointer",
@@ -73,14 +75,16 @@ export default function Home() {
             }}
           >
           {" "}
-          </Paper>
+          </Box>
         </Grid>
         <Grid item xs={12} md={9}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
-              background: "transparent",
+              background: "#eee",
               height: "240px",
+              border:`1px solid ${theme.palette.background.default}`,
+              borderRadius:"40px",
               transition: "0.5s",
               "&:hover": {
                 scale: "1.03",
@@ -90,14 +94,16 @@ export default function Home() {
             }}
           >
           {" "}
-          </Paper>
+          </Box>
         </Grid>
         <Grid item xs={6 }md={3}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
-              background: "transparent",
+              background: "#eee",
               height: "240px",
+              border:`1px solid ${theme.palette.background.default}`,
+              borderRadius:"40px",
               overflowY:"scroll",
               transition: "0.5s",
               "&:hover": {
@@ -108,15 +114,17 @@ export default function Home() {
             }}
           >
           {" "}<Box height='400px'/>
-          </Paper>
+          </Box>
         </Grid>
         <Grid item xs={6}md={4}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
               background: "transparent",
               height: "100%",
-              transition: "0.5s",
+
+border:`1px solid ${theme.palette.background.default}`,
+borderRadius:"40px",              transition: "0.5s",
               "&:hover": {
                 scale: "1.1",
                 cursor: "pointer",
@@ -125,15 +133,17 @@ export default function Home() {
             }}
           >
           {" "}
-          </Paper>
+          </Box>
         </Grid>
         <Grid item xs={12}md={4}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
               background: "transparent",
               height: "100%",
-              transition: "0.5s",
+
+border:`1px solid ${theme.palette.background.default}`,
+borderRadius:"40px",              transition: "0.5s",
               "&:hover": {
                 scale: "1.1",
                 cursor: "pointer",
@@ -142,14 +152,16 @@ export default function Home() {
             }}
           >
           {" "}
-          </Paper>
+          </Box>
         </Grid>
         <Grid item xs={12}md={4}>
-          <Paper
+          <Box
             elevation={5}
             sx={{
               background: "transparent",
               height: "170px",
+              border:`1px solid ${theme.palette.background.default}`,
+              borderRadius:"40px",
               transition: "0.5s",
               "&:hover": {
                 scale: "1.1",
@@ -159,7 +171,7 @@ export default function Home() {
             }}
           >
           {" "}
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </Box>

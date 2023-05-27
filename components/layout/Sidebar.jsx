@@ -221,7 +221,7 @@ function Sidebar({ children }) {
           <Typography
             color="primary"
             mt={2}
-            fontSize={28}
+            fontSize={24}
             fontWeight={700}
             noWrap={true}
             sx={{ width: "100%", textAlign: "center", opacity: open ? 1 : 0 }}

@@ -6,8 +6,8 @@ function InfoBox(props) {
   const { palette } = props;
   const levelColor = palette.custom[props.level];
   return (
-    <Paper
-      elevation={5}
+    <Box
+      // elevation={5}
       sx={{
         // borderTop: `8px solid ${levelColor.primary}`,
         borderBottom: `8px solid ${levelColor.primary}`,
@@ -15,6 +15,8 @@ function InfoBox(props) {
         "&:hover": { scale: "1.1", cursor: "pointer", transition: "0.5s" },
         backgroundColor: palette.background.extraLight,
         padding: "8px 0px",
+        border : '1px solid #ccc',
+        borderRadius : "40px"
       }}
     >
       <Box display="flex" justifyContent="center">
@@ -61,7 +63,7 @@ function InfoBox(props) {
           <Typography>{Number(props.info.percentage) * 100}%</Typography>
         </Box>
       </Container>
-    </Paper>
+    </Box>
   );
 }
 

@@ -3,12 +3,25 @@ import { Box, useTheme } from "@mui/material";
 import Header from "../components/layout/header";
 import Head from "next/head";
 import TasksList from "../components/Lists/tasks-list";
+import Toast from "../components/shared/toast";
+import { getUnderTakings } from "../utils/apis";
+import { useFireBase } from "../lib/firebase";
 
 function Undertakings() {
   const theme = useTheme();
   const [firstTask, setFirstTask] = useState(true);
-
-  const handleCreate = () => {
+  const {db} = useFireBase()  
+  useEffect(() => {
+    async function getData() {
+      const [tasks,err] = await getUnderTakings(db)
+      // console.log({tasks,err})
+    }
+    getData()
+    
+  }, [])
+  
+  const handleCreate = (e) => {
+    e.preventDefault()
     setFirstTask(false);
   };
   return (
@@ -26,7 +39,9 @@ function Undertakings() {
         firstTask={firstTask}
         headerBackground={theme.palette.background.dark}
         theme={theme.palette}
+        
       />
+      
     </Box>
   );
 }
