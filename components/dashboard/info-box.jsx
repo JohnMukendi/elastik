@@ -9,33 +9,38 @@ function InfoBox(props) {
     <Box
       // elevation={5}
       sx={{
-        // borderTop: `8px solid ${levelColor.primary}`,
-        borderBottom: `8px solid ${levelColor.primary}`,
+        // borderTop: `4px solid ${levelColor.primary}99`,
         transition: "0.5s",
         "&:hover": { scale: "1.1", cursor: "pointer", transition: "0.5s" },
         backgroundColor: palette.background.extraLight,
         padding: "8px 0px",
-        border : '1px solid #ccc',
+        border : `1px solid ${palette.alternative.border}`,
+        // borderBottom: `5px solid ${levelColor.primary}99`,
         borderRadius : "40px"
       }}
     >
       <Box display="flex" justifyContent="center">
         <Box
-          borderRadius="5px"
+          
           p={2}
           height="22px"
-          //   width="60px"
+          sx={{width:{xs:"75%",sm:"fit-content"},borderRadius:{xs:"50px",md:"5px"}}}
           display="flex"
           alignItems="center"
+          justifyContent={'center'}
           backgroundColor={levelColor.xtraLight}
+          
         >
           {React.cloneElement(props.icon, {
             sx: { fontSize: "18px", color: levelColor.primary },
           })}
           <Typography
-            sx={{ fontSize: { sm: "14px", md: "18px" } }}
+            sx={{ fontSize: { xs:"11.4px",sm: "14px", md: "18px" } }}
             fontWeight={600}
             color={levelColor.primary}
+            noWrap
+            textAlign={'center'}
+            title={props.title}
           >
             {props.title}
           </Typography>
@@ -55,7 +60,7 @@ function InfoBox(props) {
             {props.info.tasksCompleted}
           </Typography>
           <Typography sx={{ width: "100%", fontSize: { lg:12,md: 12, xs: 14 } }}>
-            {props.title} Tasks completed
+            {props.title} {props.level !== 'total' &&   "Tasks completed"}
           </Typography>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">

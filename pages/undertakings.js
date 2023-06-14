@@ -6,24 +6,23 @@ import TasksList from "../components/Lists/tasks-list";
 import Toast from "../components/shared/toast";
 import { getUnderTakings } from "../utils/apis";
 import { useFireBase } from "../lib/firebase";
+import { columns, rowsData } from "../data/static-data";
+import { updateData } from "../utils/update-data";
 
 function Undertakings() {
   const theme = useTheme();
   const [firstTask, setFirstTask] = useState(true);
-  const {db} = useFireBase()  
+  const { db } = useFireBase();
+  const [rows, setRows] = useState(rowsData);
   useEffect(() => {
     async function getData() {
-      const [tasks,err] = await getUnderTakings(db)
+      // const [tasks,err] = await getUnderTakings(db)
       // console.log({tasks,err})
     }
-    getData()
-    
-  }, [])
+    getData();
+  }, []);
+
   
-  const handleCreate = (e) => {
-    e.preventDefault()
-    setFirstTask(false);
-  };
   return (
     <Box>
       <Head>
@@ -35,13 +34,14 @@ function Undertakings() {
         info="These below are the set of tasks you set for yourself"
       ></Header>
       <TasksList
-        handleCreate={handleCreate}
+        // handleCreate={handleCreate}
         firstTask={firstTask}
         headerBackground={theme.palette.background.dark}
         theme={theme.palette}
-        
+        rows={rows}
+        setRows={setRows}
+        columns={columns}
       />
-      
     </Box>
   );
 }

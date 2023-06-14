@@ -14,11 +14,11 @@ import {
   useTheme,
 } from "@mui/material";
 import Header from "../components/layout/header";
-import Head from 'next/head'
+import Head from "next/head";
 
 const Calendar = () => {
   const theme = useTheme();
-  
+
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const handleDateClick = (selected) => {
@@ -49,24 +49,20 @@ const Calendar = () => {
 
   return (
     <Box>
-      <Head><title>Elastik | Calendar</title></Head>
+      <Head>
+        <title>Elastik | Calendar</title>
+      </Head>
       <Header name="Calendar" info="Full Calendar Interactive Page" />
 
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
-        <Box
-          flex="1 1 20%"
-          
-          p="15px"
-          borderRadius="4px"
-        >
+        <Box flex="1 1 20%" p="15px" borderRadius="4px">
           <Typography variant="h5">Events</Typography>
           <List>
             {currentEvents.map((event) => (
               <ListItem
                 key={event.id}
                 sx={{
-                  
                   margin: "10px 0",
                   borderRadius: "2px",
                 }}
@@ -89,7 +85,7 @@ const Calendar = () => {
         </Box>
 
         {/* CALENDAR */}
-        <Box  ml="15px">
+        <Box ml="15px">
           <FullCalendar
             height="75vh"
             plugins={[

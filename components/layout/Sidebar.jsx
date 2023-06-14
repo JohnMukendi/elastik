@@ -96,10 +96,9 @@ const Drawer = styled(MuiDrawer, {
 
 //component starts here
 function Sidebar({ children }) {
-
   const theme = useTheme();
   const router = useRouter();
-  const isSmallScreen = useMediaQuery('(max-width:600px)')
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerClose = () => setOpen(false);
@@ -133,7 +132,11 @@ function Sidebar({ children }) {
         }}
         elevation={0}
       >
-        <Topbar open={open} handleDrawerOpen={handleDrawerOpen} isSmallScreen={isSmallScreen} />
+        <Topbar
+          open={open}
+          handleDrawerOpen={handleDrawerOpen}
+          isSmallScreen={isSmallScreen}
+        />
       </AppBar>
       <Drawer
         variant="permanent"
@@ -272,7 +275,16 @@ function Sidebar({ children }) {
                   : theme.palette.text.unselected,
               }}
             >
-              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+              <ListItem
+                key={text}
+                disablePadding
+                sx={{
+                  display: "block",
+                  background: currentRoute(text) ? theme.palette.background.contrast : null,
+                  borderRadius:"10px",
+                  margin:'5px 10px'
+                }}
+              >
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -308,7 +320,9 @@ function Sidebar({ children }) {
           ))}
         </List>
         <Divider />
-        <Typography textAlign="center" mt={1}>Charts</Typography>
+        <Typography textAlign="center" mt={1}>
+          Charts
+        </Typography>
         <List>
           {[
             {
@@ -354,7 +368,9 @@ function Sidebar({ children }) {
                   </ListItemIcon>
 
                   <ListItemText
-                    primary={currentRoute(item.name) ? <b>{item.name}</b> : item.name}
+                    primary={
+                      currentRoute(item.name) ? <b>{item.name}</b> : item.name
+                    }
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>

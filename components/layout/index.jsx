@@ -10,7 +10,7 @@ function Layout({ children }) {
         <SwipeableTemporaryDrawer isSmallScreen={isSmallScreen}>{children}</SwipeableTemporaryDrawer>
       ) : (
         <Sidebar>
-          <Box component="main" pl={5} width='100%'>
+          <Box component="main" pl={5} width='100%' display={'flex'} flexDirection={'column'}>
             {children}
           </Box>
         </Sidebar>

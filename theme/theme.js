@@ -3,7 +3,15 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import colors from "./colors";
 import { darkPalette } from "./dark-palette";
-import { amber,indigo,red,lightBlue,green,orange,blue } from "@mui/material/colors";
+import {
+  amber,
+  indigo,
+  red,
+  lightBlue,
+  green,
+  orange,
+  blue,
+} from "@mui/material/colors";
 const ThemeSwitchContext = createContext({ toggleTheme: () => {} });
 const themeConfig = (mode = "dark") => {
   return {
@@ -12,7 +20,11 @@ const themeConfig = (mode = "dark") => {
       ...(mode === "dark"
         ? darkPalette
         : {
-            primary: { main: indigo[900], light: indigo[800], dark: indigo[200] },
+            primary: {
+              main: indigo[900],
+              light: indigo[800],
+              dark: indigo[200],
+            },
             secondary: {
               main: indigo[700],
               light: indigo[600],
@@ -20,7 +32,7 @@ const themeConfig = (mode = "dark") => {
             },
             text: {
               primary: blue[900],
-              secondary: amber[100],
+              secondary:blue[100],
               unselected: "#222",
             },
             background: {
@@ -28,6 +40,7 @@ const themeConfig = (mode = "dark") => {
               light: "#fff",
               dark: indigo[300],
               extraLight: "#f5f5f5",
+              contrast: blue[100],
             },
             custom: {
               lowLevel: {
@@ -48,15 +61,22 @@ const themeConfig = (mode = "dark") => {
                 xtraLight: green[100],
                 dark: green[600],
               },
+              total: {
+                primary: blue[100],
+                light: blue[200],
+                xtraLight: blue[400],
+                dark: blue[500],
+              },
             },
             alternative: {
-              first: indigo[500],
-              second: orange[500],
+              first: blue[500],
+              second: blue[500],
+              border:"#ccc"
             },
           }),
     },
     typography: {
-      fontFamily: "Verdana",
+      // fontFamily: "Verdana",
       // fontFamily:["__myFont_e1a1c0","__myFont_Fallback_e1a1c0"].join(",")
     },
   };
