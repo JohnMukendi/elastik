@@ -17,29 +17,25 @@ export default function DataGridDemo(props) {
   const handleCreate = (e, newTask) => {
     e.preventDefault();
     console.log(newTask);
-    const updatedData = updateData(props.rows, {
-      ...newTask,
-      id: Math.random(),
-    });
-    if (updatedData) {
-      props.setRows(updatedData);
-    }
+
+    props.setRows({ ...newTask, id: Math.random() });
+
     setOpenTaskModal(false);
     // setFirstTask(false);
   };
   const CustomToolbar = () => {
     return (
       <GridToolbarContainer sx={{ width: "100%" }}>
-        <GridToolbar sx={{ display: "flex",width:{xs:"100%"} }} />
+        <GridToolbar sx={{ display: "flex", width: { xs: "100%" } }} />
         <Box
           sx={{
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            marginLeft: "auto", 
+            marginLeft: "auto",
           }}
         >
-          <Tooltip title="Add your first task!">
+          <Tooltip title={props.firstTask ? "Add your first task!" : "Add another task!"}>
             <IconButton
               onClick={() => setOpenTaskModal(true)}
               className={props.firstTask ? "shake" : ""}

@@ -24,7 +24,7 @@ function InfoBox(props) {
           
           p={2}
           height="22px"
-          sx={{width:{xs:"75%",sm:"fit-content"},borderRadius:{xs:"50px",md:"5px"}}}
+          sx={{width:{xs:"75%",sm:"80%"},borderRadius:{xs:"50px",md:"5px"}}}
           display="flex"
           alignItems="center"
           justifyContent={'center'}

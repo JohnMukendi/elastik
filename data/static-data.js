@@ -1,33 +1,18 @@
 export const columns = [
   { field: "task", headerName: "Task", flex: 1, editable: true },
   {
-    field: "firstName",
-    headerName: "First name",
+    field: "description",
+    headerName: "Description",
     flex: 1,
     editable: true,
   },
   {
-    field: "lastName",
-    headerName: "Last name",
+    field: "priority",
+    headerName: "Priority",
     flex: 1,
     editable: true,
   },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    flex: 1,
-    editable: true,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    flex: 1,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
+  
 ];
 export const rowsData = [
   { id: 1, task: "ride bike", lastName: "Snow", firstName: "Jon", age: 35 },

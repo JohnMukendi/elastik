@@ -7,7 +7,7 @@ export const darkPalette = {
     contrastText: "rgb(200,0,0)",
   },
   secondary: { main: blue[300] },
-  text: { primary: peach[200], unselected: blue[100] },
+  text: { primary: "#eee", unselected: blue[100] },
   background: {
     default: blue[800],
     light: blue[500],

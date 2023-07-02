@@ -6,14 +6,15 @@ import TasksList from "../components/Lists/tasks-list";
 import Toast from "../components/shared/toast";
 import { getUnderTakings } from "../utils/apis";
 import { useFireBase } from "../lib/firebase";
-import { columns, rowsData } from "../data/static-data";
 import { updateData } from "../utils/update-data";
+import { useTasks } from "../contexts/tasks/tasks-context";
 
 function Undertakings() {
   const theme = useTheme();
-  const [firstTask, setFirstTask] = useState(true);
+  const { state, dispatch } = useTasks();
+  const { tasks: rows, taskColumns, firstTask } = state;
   const { db } = useFireBase();
-  const [rows, setRows] = useState(rowsData);
+
   useEffect(() => {
     async function getData() {
       // const [tasks,err] = await getUnderTakings(db)
@@ -22,7 +23,6 @@ function Undertakings() {
     getData();
   }, []);
 
-  
   return (
     <Box>
       <Head>
@@ -39,8 +39,11 @@ function Undertakings() {
         headerBackground={theme.palette.background.dark}
         theme={theme.palette}
         rows={rows}
-        setRows={setRows}
-        columns={columns}
+        setRows={(data) => {
+          dispatch("isFirstTask", false);
+          dispatch("addTask", data);
+        }}
+        columns={taskColumns}
       />
     </Box>
   );

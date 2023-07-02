@@ -27,6 +27,7 @@
     "@nivo/pie": "^0.80.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "class-name-prop": "^6.0.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^9.22.1",
     "formik": "^2.2.9",

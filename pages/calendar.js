@@ -46,7 +46,7 @@ const Calendar = () => {
       selected.event.remove();
     }
   };
-
+  console.log({currentEvents})
   return (
     <Box>
       <Head>
@@ -85,7 +85,7 @@ const Calendar = () => {
         </Box>
 
         {/* CALENDAR */}
-        <Box ml="15px">
+        <Box ml="15px" sx={{width:"100%"}}>
           <FullCalendar
             height="75vh"
             plugins={[

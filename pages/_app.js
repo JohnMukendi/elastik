@@ -7,10 +7,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Roboto_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import RouteIndicator from "../utils/router-indicator";
+import { TasksContextProvider } from "../contexts/tasks/tasks-context";
 
 const myFont = localFont({
   src: "../fonts/static/RobotoMono-Regular.ttf",
-
 });
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -29,9 +30,12 @@ export default function App({ Component, pageProps }) {
       </Head>
       <main className={myFont.className}>
         <ThemeSwitchProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <TasksContextProvider>
+            <RouteIndicator />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </TasksContextProvider>
         </ThemeSwitchProvider>
       </main>
     </>
